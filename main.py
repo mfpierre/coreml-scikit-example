@@ -1,5 +1,6 @@
 from sklearn import datasets
 from sklearn.linear_model import LogisticRegression
+from sklearn.externals import joblib
 import coremltools
 
 # Load the iris dataset
@@ -9,9 +10,12 @@ iris = datasets.load_iris()
 model = LogisticRegression()
 model.fit(iris.data, iris.target)
 
-# make a prediction
+# Make a prediction
 print 'prediction with scikit model:'
 print iris.target_names[model.predict([[1.0, 2.0, 2.0, 3.0]])]
+
+# Dumping the model with joblib for comparison
+joblib.dump(model, 'iris.pkl')
 
 # Export and save the CoreML model
 coreml_model = coremltools.converters.sklearn.convert(model, iris.feature_names, 'iris class')

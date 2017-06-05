@@ -4,6 +4,12 @@ Apple CoreML example with scikit-learn.
 
 This is a simple example on how to export a Scikit-Learn model (logistic regression in this case) to the CoreML file, load it back and make predictions on it
 
+On this really simple example it seems Apple's format is a bit lighter than a regular pickle:
+```
+677B iris.mlmodel
+917B iris.pkl
+```
+
 ## Usage
 
 It seeems that the [coreml package](https://pypi.python.org/pypi/coremltools) only supports Python 2.7 for now
